@@ -1,0 +1,68 @@
+<html>
+<body>
+Décrit l'ensemble des classes constituant la partie abstraite de l'Objet Interactionnel Entité <code>BoitePropriete</code>.
+
+<h2>Description de la BoitePropriete</h2>
+
+<p>
+Une BoitePropriete correspond à une boîte flottante, constituée d'un premier panel décrivant un titre ainsi qu'un titre étendu, ainsi que
+d'un ensemble de panels généralistes de deux types :
+<ul>
+	<li>Des panels contenant des lignes de texte. Chaque ligne peut être colorée indépendamment. Le formattage de ces lignes 
+	peut être réalisé selon les conventions HTML ou ANSI standard. Si le nombre de lignes dépasse la taille du panel, un ascenseur
+	vertical apparaît,</li>
+	<li>Des panels contenant des images. De même que pour le panel texte, un ascenseur apparaît si le nombre d'images
+	contenu dans le panel dépasse la taille de ce dernier. <b>A IMPLEMENTER PLUS PRECISEMENT !!</b></li>
+</ul>
+Il est à noter que chaque panel est constitué d'un titre et de son contenu.
+</p>
+	
+<p>
+Une BoitePropriete peut être présentée selon deux modes :
+<ul>
+	<li><b>BoitePropriete réduite</b> : Seul le titre de la boîte apparaît</li>
+	<li><b>BoitePropriete développée</b> : Le titre et le titre étendu apparaissent, ainsi que tous les panels expressément indiqué comme étant actifs</li>
+</ul>
+Lorsque la BoitePropriete est en mode <b>développée</b>, les opérations suivantes peuvent être appliquées aux panels :
+<ul>
+	<li><b>Propriétés étendues</b> : Le titre du panel ainsi que son contenu sont affichés</li>
+	<li><b>Propriétés réduites</b> : Seul le titre du panel apparaît</li>
+</ul>
+
+En mode <b>développée</b>, quatre types d'opération peuvent être appliqués pour l'affichage des panels de la BoiePropriete :
+<ul>
+	<li><b>Panel x affiché</b> : Affichage du panel</li>
+	<li><b>Panel x caché</b> : Dissimulation du panel</li>
+	<li><b>Afficher tous les panels</b></li>
+	<li><b>Cacher tous les panels</b></li>
+</ul>
+</p>
+
+<h2>Structure du package</h2>
+
+<p>
+	
+	Les classes sont structurées de la manière suivante :
+<ul>
+	<li>L'interface <code>BoitePropriete</code> décrit les services spécifiques à l'Objet BoitePropriete</li>
+	<li>La classe <code>BoiteProprieteImpl</code> décrit l'implémentation des services de l'BoitePropriete. Cette classe implémente
+	également les services propres au type <code>EntityObject</code>, ainsi que les services liés à 
+	l'affichage de l'Objet Interactionnel <code>Displayable</code></li>
+	<li>La classe <code>BoiteProprieteFactory</code> gère l'instanciation des objets BoitePropriete</li>
+	<li>L'interface <code>BoiteProprieteFactoryInterface</code> sert à la déclaration des services de fabrique dans le cadre de l'implémentation
+	OSGi</li>
+	<li>La classe <code>Panel</code> correspond à une classe &lt; Partie &gt; de l'Objet BoitePropriete</li>
+	<li>La classe <code>BlocImage</code> correspond également à une classe &lt; Partie &gt; de l'Objet BoitePropriete, utilisée pour
+	la description des panels contenant des images.</li>
+	<li>La classe <code>BoiteProprieteTechInterface</code> décrit l'ensemble des services pour l'affichage de la BoitePropriete. Cette
+	interface doit être implémentée par tout service réalisant la représentation graphique de la <code>BoitePropriete</code></li>
+	
+</ul>
+</p>
+
+@see common.entity.EntityObject EntityObject
+@see interactional.common.Displayable
+</body>
+
+
+</html>

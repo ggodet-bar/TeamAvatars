@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE OMConnections	SYSTEM	"OMConnexions.dtd">
+<OMConnections>
+	
+	<OMConnection>
+		<source type="OME" name="business.entity.member.Member" />
+		<destination type="OIE" name="interactional.entity.Sprite.Sprite" />
+		<destination type="OIE" name="interactional.entity.BoitePropriete.BoitePropriete" />
+		<proxy type="OIP" name="interactional.process.manageavatarscene.ManageAvatarScene" />
+		<translation name="control.translation.MemberTranslation" />
+	</OMConnection>
+</OMConnections>

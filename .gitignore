@@ -1,0 +1,6 @@
+lib/**
+bin/**
+.classpath
+.pmd
+.project
+.settings
