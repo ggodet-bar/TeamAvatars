@@ -32,7 +32,7 @@ public class Main {
 		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}  
-        Initializer.instance.loadPropertiesFile("/Users/godetg/Documents/workspace/TeamAvatars/teamAvatar.properties");
+        Initializer.instance.loadPropertiesFile("teamAvatar.properties");
         Initializer.instance.setupTechnicalClasses();
 //        Initializer.instance.setupSOParameters() ;
 //		Initializer.instance.setIsUnitTesting(true) ;

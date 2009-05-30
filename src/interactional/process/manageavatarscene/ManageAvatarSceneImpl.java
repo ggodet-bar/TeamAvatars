@@ -31,7 +31,6 @@ public class ManageAvatarSceneImpl implements ProcessObject, ManageAvatarScene {
     	diskDiameters = new ArrayList<Integer>() ;
     }
     
-	@Override
 	public void initializeScene() {
 		technicalLayer.setBlur(shadowBlur) ;
 		technicalLayer.initializeScene() ;
@@ -48,7 +47,6 @@ public class ManageAvatarSceneImpl implements ProcessObject, ManageAvatarScene {
 		technicalLayer.setBlur(shadowBlur) ;
 	}
 
-	@Override
 	public void setSceneSize(Dimension sceneSize) {
 		assert sceneSize.width > 0 && sceneSize.height > 0 : "Inconsistence scene size: height = " + sceneSize.height + ", width = " + sceneSize.width ;
 		this.sceneSize = sceneSize ;
@@ -56,7 +54,6 @@ public class ManageAvatarSceneImpl implements ProcessObject, ManageAvatarScene {
 		
 	}
 
-	@Override
 	public int addDiskToScene(int internalDiameter, int externalDiameter,
 			Color diskColor) {
 		assert internalDiameter >= 0 && externalDiameter > 0 && internalDiameter < externalDiameter : "Diameter inconsistency" ;
@@ -73,7 +70,6 @@ public class ManageAvatarSceneImpl implements ProcessObject, ManageAvatarScene {
 		return resultValue ;
 	}
 
-	@Override
 	public int addSpriteBoxToDisk(int diskID, Image spriteImg, String boxCaption) {
 		TypeLienActeurBoite link = new TypeLienActeurBoite() ;
 		Sprite sprite = SpriteFactory.instance.creerEntite() ;

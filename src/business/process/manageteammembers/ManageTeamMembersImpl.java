@@ -30,7 +30,6 @@ public class ManageTeamMembersImpl implements ManageTeamMembers, ProcessObject {
 		teams = new ArrayList<Team>() ;
 	}
 	
-	@Override
 	public int createTeam(String teamName, List<String> offices) {
 		Team team = (Team) ((TeamFactory) TeamFactory.instance).creerEntite() ;
 		team.setTeamName(teamName) ;
@@ -39,7 +38,6 @@ public class ManageTeamMembersImpl implements ManageTeamMembers, ProcessObject {
 		return ((EntityObjectServices)team).getID() ;
 	}
 
-	@Override
 	public int createTeamMember(int teamID, String firstName, String lastName,
 			String office, String email, TeamPosition position, int mentorID) {
 		assert ((AbstractEntityFactory) MemberFactory.instance).rechercher(mentorID) != null : "Mentor does not exist" ;
@@ -48,13 +46,11 @@ public class ManageTeamMembersImpl implements ManageTeamMembers, ProcessObject {
 		return memberID;
 	}
 
-	@Override
 	public void setTeamMemberPhotograph(int memberID, Image photograph) {
 		Member member = (Member) ((AbstractEntityFactory) MemberFactory.instance).rechercher(memberID) ;
 		member.setPhotograph(photograph) ;
 	}
 
-	@Override
 	public void setTeamOffices(int teamID, List<String> offices) {
 		Team team = (Team) ((AbstractEntityFactory) TeamFactory.instance).rechercher(teamID) ;
 		if (offices != null) {
@@ -62,7 +58,6 @@ public class ManageTeamMembersImpl implements ManageTeamMembers, ProcessObject {
 		}
 	}
 	
-	@Override
 	public boolean deleteTeamMember(int memberID) {
 		Member member = (Member) ((AbstractEntityFactory) MemberFactory.instance).rechercher(memberID) ;
 		boolean returnValue = (member != null) ;
@@ -73,7 +68,6 @@ public class ManageTeamMembersImpl implements ManageTeamMembers, ProcessObject {
 		return returnValue ;
 	}
 
-	@Override
 	public boolean loadTeamData(String localization) {
 		boolean returnValue = false ;
 		try {
@@ -95,13 +89,11 @@ public class ManageTeamMembersImpl implements ManageTeamMembers, ProcessObject {
 		Parser.instance = parser ;
 	}
 
-	@Override
 	public EnumMap<MemberRoleData, Object> getMemberData(int memberId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public int[] getTeamMembers(String teamName) {
 		
 		// TODO Auto-generated method stub

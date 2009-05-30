@@ -38,7 +38,6 @@ public class SwingSceneGraphics implements AvatarSceneGraphics {
 		diskColors = new ArrayList<Color>() ;
 	}
 	
-	@Override
 	public boolean initializeScene() {
 		frame = new JFrame() ;
 		frame.setPreferredSize(dimensionZone);
@@ -139,7 +138,6 @@ public class SwingSceneGraphics implements AvatarSceneGraphics {
 		
 	}
 
-	@Override
 	public void setBlur(int shadowBlur) {
 		float[] convolveKernel = new float[shadowBlur * shadowBlur] ;
 		float fraction = 1.0f / ((float)shadowBlur * (float)shadowBlur) ;
@@ -152,7 +150,6 @@ public class SwingSceneGraphics implements AvatarSceneGraphics {
 		}
 	}
 
-	@Override
 	public void setSceneSize(Dimension sceneSize) {
 		dimensionZone = sceneSize;
         Shape mask = new Area(new RoundRectangle2D.Float(0, 0, dimensionZone.width, dimensionZone.height,20f,20f));
@@ -163,7 +160,6 @@ public class SwingSceneGraphics implements AvatarSceneGraphics {
 		
 	}
 
-	@Override
 	public void addDisk(int diskID, int internalDiameter, int externalDiameter,
 			Color diskColor) {
 		int midH = dimensionZone.height / 2 ;

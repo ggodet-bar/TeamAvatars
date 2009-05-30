@@ -30,43 +30,35 @@ public class MemberImpl implements EntityObject, Member {
 		this.team = team ;
 	}
 	
-	@Override
 	public String getEMail() {
 		return eMail ;
 	}
 
-	@Override
 	public String getFirstName() {
 		return firstName ;
 	}
 
-	@Override
 	public String getLastName() {
 		return lastName ;
 	}
 
 
-	@Override
 	public Team getTeam() {
 		return team ;
 	}
 
-	@Override
 	public Image getPhotograph() {
 		return photograph ;
 	}
 
-	@Override
 	public void setPhotograph(Image photograph) {
 		this.photograph = photograph ;
 	}
 
-	@Override
 	public void setTeamPosition(TeamPosition position) {
 		this.position = position;
 	}
 
-	@Override
 	public TeamPosition getTeamPosition() {
 		return position;
 	}

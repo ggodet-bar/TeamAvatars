@@ -1,0 +1,33 @@
+<project xmlns:aspectj="antlib:org.aspectj">
+	<property name="lib.dir" value="lib" />
+	
+	<taskdef 
+	      resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties"/>
+	
+	<path id="classpath">
+		<fileset dir="${lib.dir}" includes="**/*.jar"/>
+		<fileset file="${aspectjpath}/lib/aspectjrt.jar" />
+	</path>
+	
+	<target name = "clean">
+		<delete dir = "bin" />
+	</target>
+
+	<target name="compile">
+		<mkdir dir="bin" />
+		<aspectj:iajc srcdir="src" destDir="bin" classpathref="classpath" source="1.5" target="1.5"/>
+	</target>
+
+	<target name= "run">
+		<java classname="common.Main" fork="true">
+			<arg value="-ea" />
+			<classpath>
+				<fileset dir="lib" >
+					<include name="**/*.jar" />
+				</fileset>
+				<pathelement location="bin" />
+				<pathelement path="${java.class.path}" />
+			</classpath>
+		</java>
+	</target>
+</project>
