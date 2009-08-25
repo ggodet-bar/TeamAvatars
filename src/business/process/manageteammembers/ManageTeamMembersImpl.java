@@ -16,9 +16,8 @@ import business.dataref.MemberRoleData;
 import business.dataref.TeamData;
 import business.dataref.TeamPosition;
 import business.entity.member.Member;
-import business.entity.member.MemberFactory;
 import business.entity.team.Team;
-import business.entity.team.TeamFactory;
+import business.entity.team.TeamImpl;
 
 public class ManageTeamMembersImpl implements ManageTeamMembers, ProcessObject {
 
@@ -31,7 +30,7 @@ public class ManageTeamMembersImpl implements ManageTeamMembers, ProcessObject {
 	}
 	
 	public int createTeam(String teamName, List<String> offices) {
-		Team team = (Team) ((TeamFactory) TeamFactory.instance).creerEntite() ;
+		Team team = (Team) AbstractEntityFactory.instance.createEntity(Team.class) ;
 		team.setTeamName(teamName) ;
 		team.setOfficeList(offices) ;
 		teams.add(team) ;
@@ -40,26 +39,26 @@ public class ManageTeamMembersImpl implements ManageTeamMembers, ProcessObject {
 
 	public int createTeamMember(int teamID, String firstName, String lastName,
 			String office, String email, TeamPosition position, int mentorID) {
-		assert ((AbstractEntityFactory) MemberFactory.instance).rechercher(mentorID) != null : "Mentor does not exist" ;
-		Team team = (Team) ((AbstractEntityFactory) TeamFactory.instance).rechercher(teamID) ;
+		assert AbstractEntityFactory.instance.search(Member.class, mentorID) != null : "Mentor does not exist" ;
+		Team team = (Team) AbstractEntityFactory.instance.search(Team.class, teamID) ;
 		int memberID = team.addMember(firstName, lastName, office, email, position, mentorID) ;
 		return memberID;
 	}
 
 	public void setTeamMemberPhotograph(int memberID, Image photograph) {
-		Member member = (Member) ((AbstractEntityFactory) MemberFactory.instance).rechercher(memberID) ;
+		Member member = (Member) AbstractEntityFactory.instance.search(Member.class, memberID) ;
 		member.setPhotograph(photograph) ;
 	}
 
 	public void setTeamOffices(int teamID, List<String> offices) {
-		Team team = (Team) ((AbstractEntityFactory) TeamFactory.instance).rechercher(teamID) ;
+		Team team = (Team) AbstractEntityFactory.instance.search(Team.class, teamID) ;
 		if (offices != null) {
 			team.setOfficeList(offices) ;
 		}
 	}
 	
 	public boolean deleteTeamMember(int memberID) {
-		Member member = (Member) ((AbstractEntityFactory) MemberFactory.instance).rechercher(memberID) ;
+		Member member = (Member) AbstractEntityFactory.instance.search(Member.class, memberID) ;
 		boolean returnValue = (member != null) ;
 		if (returnValue) {
 			Team team = member.getTeam() ;
@@ -75,7 +74,7 @@ public class ManageTeamMembersImpl implements ManageTeamMembers, ProcessObject {
 			List<EnumMap<TeamData, Object>> rawData = Parser.instance.getTeamStructure() ;
 
 			for (EnumMap<TeamData, Object> aTeam : rawData) {
-				teams.add(((TeamFactory) TeamFactory.instance).loadTeamFromStruct(aTeam)) ;
+				teams.add(TeamImpl.loadTeamFromStruct(aTeam)) ;
 			}
 			returnValue = true ;
 		} catch (URISyntaxException e) {

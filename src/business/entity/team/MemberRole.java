@@ -3,7 +3,6 @@ package business.entity.team;
 import java.awt.Image;
 import java.util.EnumMap;
 
-import org.sonata.framework.common.SymphonyObject;
 import org.sonata.framework.common.SymphonyRole;
 import org.sonata.framework.common.entity.EntityObject;
 import org.sonata.framework.common.entity.EntityObjectServices;
@@ -12,7 +11,7 @@ import business.dataref.MemberData;
 import business.dataref.MemberRoleData;
 import business.dataref.TeamPosition;
 import business.entity.member.Member;
-import business.entity.member.MemberFactory;
+import business.entity.member.MemberImpl;
 
 public class MemberRole implements SymphonyRole {
 
@@ -24,7 +23,7 @@ public class MemberRole implements SymphonyRole {
 	
 	public static MemberRole loadFromStruct(EnumMap<MemberRoleData, Object> structure) {
 		EnumMap<MemberData, Object> newStructure = new EnumMap(structure) ;
-		Member aMember = ((MemberFactory) MemberFactory.instance).loadMemberFromStruct(newStructure) ;
+		Member aMember = MemberImpl.loadMemberFromStruct(newStructure) ;
 		
 		MemberRole newMember = new MemberRole() ;
 		newMember.member = aMember ;
